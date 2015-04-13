@@ -28,6 +28,8 @@ using namespace boost;
 CWallet* pwalletMain;
 CClientUIInterface uiInterface;
 
+bool fUseFastIndex;
+
 //////////////////////////////////////////////////////////////////////////////
 //
 // Shutdown
@@ -362,6 +364,8 @@ bool AppInit2()
     if (fTestNet) {
         SoftSetBoolArg("-irc", true);
     }
+
+    fUseFastIndex = GetBoolArg("-fastindex", true);
 
     if (mapArgs.count("-bind")) {
         // when specifying an explicit binding address, you want to listen on it
